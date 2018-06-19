@@ -11,6 +11,7 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "pg": "^7.4.3",
+    "postgraphile": "^4.0.0-rc.1",
     "restify": "^7.2.1",
     "restify-cors-middleware": "^1.1.1",
     "restify-plugins": "^1.6.0",

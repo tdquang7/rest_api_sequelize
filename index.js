@@ -3,12 +3,20 @@ var server = restify.createServer()
 const restifyBodyParser = require('restify-plugins').bodyParser;
 server.use(restifyBodyParser());
 var {User} = require('./models/index')
+var { postgraphile } = require('postgraphile')
 
 server.get('/', (req, res, next) => {
     res.send({
         data: 'Server is ready'
     })
 })
+
+server.pre(postgraphile(
+	'http://postgres:123@localhost:5432/postgres',
+	'public', {
+    graphiql: true,
+    pgDefaultRole: 'postgres',
+}))
 
 var users = [
     { name: 'Cao Đức Minh', email: "cdminh@gmail.com"},
